@@ -12,7 +12,7 @@ public class Main {
         Bank banco = new Bank();
         Cuenta cuenta;
         int menuBanco = menuBanco();
-        while (menuBanco != 5) {
+        while (true) {
             switch (menuBanco) {
                 case 1:
                     cuenta = crearCuenta(banco);

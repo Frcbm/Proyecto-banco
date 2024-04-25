@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cuenta {
     /*En esta clase nos encontramos toda la información y métodos necesarios para gestionar las cuentas*/
-    private  String IBAN;
+    private String IBAN;
     private String nombreTitular;
     private String apellidoTitular;
     private double saldo;
@@ -44,6 +44,9 @@ public class Cuenta {
     /*Tanto en los ingresos como retiradas de dinero vamos a dejar hacerlo unicamente si la longitud dfe la lista de movimientos
     * es menor que 100, en caso contrario retornamos el saldo*/
     public double ingreso(double ingreso){
+        if(ingreso >= 3000){
+            System.out.println("Avisar a Hacienda");
+        }
         if(movimientos.size() >= 100){
             System.out.println("Has agotado los movimientos");
             return this.saldo;
@@ -53,8 +56,14 @@ public class Cuenta {
     }
     public double retirada(double retirada){
         /*Obtenemos el valor absoluto de la retirada para evitar problema si el usuario nos introduce un valor negativo*/
+        if(retirada >= 3000){
+            System.out.println("Avisar a Hacienda");
+        }
         if(retirada < 0){
             retirada = Math.abs(retirada);
+        }
+        if(this.saldo - retirada < -50){
+            System.out.println("Saldo negativo");
         }
         if(movimientos.size() >= 100){
             System.out.println("Has agotado los movimientos");
